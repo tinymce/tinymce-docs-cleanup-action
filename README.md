@@ -1,0 +1,1 @@
+# TinyMCE Docs Cleanup Action
