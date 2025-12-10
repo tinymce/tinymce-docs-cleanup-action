@@ -40735,7 +40735,7 @@ const keyTaggedAsOld = async (client, bucket, key) => {
     await client.send(new CopyObjectCommand({
         Bucket: bucket,
         Key: key,
-        CopySource: `${bucket}/${key}`,
+        CopySource: `${bucket}/${key.split('/').map(encodeURIComponent).join('/')}`,
         ContentType: data.ContentType,
         MetadataDirective: 'REPLACE',
         Metadata: {
