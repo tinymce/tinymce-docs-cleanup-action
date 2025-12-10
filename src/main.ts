@@ -186,7 +186,7 @@ const inputFolder = () => {
 /** Get the parallel input */
 const inputParallel = () => {
   const parallel = parseInt(core.getInput('parallel'), 10);
-  if (Number.isNaN(parallel)) {
+  if (Number.isNaN(parallel) || parallel < 1) {
     throw new Error(`Invalid integer value for parallel, got ${core.getInput('parallel')}`);
   }
   return parallel;
