@@ -40684,6 +40684,9 @@ const compareVersions = (a, b) => {
  * generator that runs `max` of those promises in parallel to improve throughput.
  */
 async function* parallelGenerator(max, source) {
+    if (max < 1) {
+        throw new Error('max must be at least 1');
+    }
     const wrap = (i, task) => new Promise((resolve) => {
         if (task.done) {
             resolve([i, { done: true, value: undefined }]);
