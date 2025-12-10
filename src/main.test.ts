@@ -145,13 +145,7 @@ const getTags = async (client: S3Client, bucket: string, prefix: string, subpath
     Bucket: bucket,
     Key: key
   }));
-  const tags: Record<string, string> = {};
-  for (const tag of data.TagSet ?? []) {
-    if (tag.Key && tag.Value) {
-      tags[tag.Key] = tag.Value;
-    }
-  }
-  return tags;
+  return Object.fromEntries((data.TagSet ?? []).map((t) => [ t.Key, t.Value ]));
 };
 
 // names
