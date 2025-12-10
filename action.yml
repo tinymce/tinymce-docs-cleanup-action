@@ -1,0 +1,20 @@
+name: TinyMCE Docs Cleanup
+description: Tag old versions as old=true while updating last modified date
+
+inputs:
+  bucket:
+    description: Target bucket
+    required: true
+  
+  folder:
+    description: The folder within the target bucket to tag old versions.
+    required: true
+
+  parallel:
+    description: The number of parallel tagging operations.
+    required: false
+    default: 5
+
+runs:
+  using: node24
+  main: dist/index.js

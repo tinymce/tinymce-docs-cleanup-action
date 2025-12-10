@@ -1,0 +1,33 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.241.1/containers/alpine
+{
+	"name": "Node App Container",
+	"dockerComposeFile": ["../docker-compose.yml"],
+  "service": "app",
+  "shutdownAction": "stopCompose",
+  "workspaceFolder": "/workspaces/tinymce-docs-cleanup-action",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true
+    },
+    "ghcr.io/devcontainers/features/aws-cli:1.1.2": {}
+  },
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "editorconfig.editorconfig",
+        "donjayamanne.githistory"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "eslint.format.enable": true,
+        "[typescript]": {
+          "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+        }
+      }
+    }
+  },
+}
