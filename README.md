@@ -29,7 +29,7 @@ The number of objects to tag in parallel which can improve throughput. Default: 
 uses: tinymce/tinymce-docs-cleanup-action@v1.0
 with:
   bucket: tiny-cloud-antora-docs-preview
-  prefix: main
+  folder: main
   parallel: 10
 ```
 
@@ -39,7 +39,7 @@ Open in devcontainer which has 2 containers:
 - app
 - s3
 
-The node container is the main one and has environement variables setup to connect
+The node container is the main one and has environment variables setup to connect
 AWS tools to the minio container.
 
 The app container also has the AWS CLI installed.
@@ -49,12 +49,12 @@ the host machine to find the mapped port.
 The credentials are in `.devcontainer/docker-compose.yml`.
 
 ### Test
-```
+```bash
 yarn test
 ```
 
 ### Build
-```
+```bash
 yarn build
 ```
 
