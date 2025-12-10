@@ -40869,7 +40869,7 @@ const main = async () => {
  * Run the action and report errors.
  */
 const run = async () => {
-    coreExports.debug('Starting tinymce-docs-generate-redirects-action');
+    coreExports.debug('Starting tinymce-docs-cleanup-action');
     try {
         await main();
     }

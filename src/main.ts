@@ -205,7 +205,7 @@ const main = async () => {
  * Run the action and report errors.
  */
 export const run = async () => {
-  core.debug('Starting tinymce-docs-generate-redirects-action');
+  core.debug('Starting tinymce-docs-cleanup-action');
   try {
     await main();
   } catch (err) {
