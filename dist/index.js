@@ -40779,7 +40779,7 @@ const prefixTaggedAsOld = async (client, bucket, prefix, parallel) => {
             result = await tasks.next();
         }
         isTruncated = data.IsTruncated ?? false;
-        marker = data.NextMarker;
+        marker = data.NextMarker ?? data.Contents?.at(-1)?.Key;
     }
 };
 /** Checks if the first key in a prefix has been tagged as old. */

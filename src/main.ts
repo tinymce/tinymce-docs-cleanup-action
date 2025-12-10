@@ -88,7 +88,7 @@ const prefixTaggedAsOld = async (
     }
 
     isTruncated = data.IsTruncated ?? false;
-    marker = data.NextMarker;
+    marker = data.NextMarker ?? data.Contents?.at(-1)?.Key;
   }
 };
 
