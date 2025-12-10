@@ -6,11 +6,14 @@ export async function* parallelGenerator<T>(max: number, source: Generator<Promi
   if (max < 1) {
     throw new Error('max must be at least 1');
   }
-  const wrap = (i: number, task: IteratorResult<Promise<T>, void>): Promise<[number, IteratorResult<T>]> => new Promise((resolve) => {
+  const wrap = (i: number, task: IteratorResult<Promise<T>, void>): Promise<[number, IteratorResult<T>]> => new Promise((resolve, reject) => {
     if (task.done) {
       resolve([ i, { done: true, value: undefined }]);
     } else {
-      task.value.then((v) => resolve([ i, { done: false, value: v }]));
+      task.value.then(
+        (v) => resolve([ i, { done: false, value: v }]),
+        reject
+      );
     }
   });
   const tasks: (Promise<[number, IteratorResult<T, void>]>)[] = [];

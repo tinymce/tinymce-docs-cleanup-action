@@ -40687,12 +40687,12 @@ async function* parallelGenerator(max, source) {
     if (max < 1) {
         throw new Error('max must be at least 1');
     }
-    const wrap = (i, task) => new Promise((resolve) => {
+    const wrap = (i, task) => new Promise((resolve, reject) => {
         if (task.done) {
             resolve([i, { done: true, value: undefined }]);
         }
         else {
-            task.value.then((v) => resolve([i, { done: false, value: v }]));
+            task.value.then((v) => resolve([i, { done: false, value: v }]), reject);
         }
     });
     const tasks = [];
