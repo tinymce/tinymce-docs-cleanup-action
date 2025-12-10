@@ -19,6 +19,7 @@ interface SpawnAsyncResult {
 const spawnAsync = (cmd: string[]) => new Promise<SpawnAsyncResult>((resolve) => {
   const p = spawn(cmd[0], cmd.slice(1), { stdio: [ 'inherit', 'pipe', 'pipe' ] });
   p.stdout.setEncoding('utf-8');
+  p.stderr.setEncoding('utf-8');
   let out = '';
   let err = '';
   p.stdout.on('data', (chunk) => {
