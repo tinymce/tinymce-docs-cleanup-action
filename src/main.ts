@@ -30,6 +30,7 @@ const keyTaggedAsOld = async (
     Key: key,
     CopySource: `${bucket}/${key.split('/').map(encodeURIComponent).join('/')}`,
     ContentType: data.ContentType,
+    CacheControl: data.CacheControl,
     MetadataDirective: 'REPLACE',
     Metadata: {
       ...data.Metadata ?? {},
